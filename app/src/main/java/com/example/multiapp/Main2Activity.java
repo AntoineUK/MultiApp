@@ -2,6 +2,8 @@ package com.example.multiapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -63,6 +65,7 @@ public class Main2Activity extends AppCompatActivity {
                 roomRef = database.getReference("rooms/" + roomName + "/player1");
                 addRoomEventListener();
                 roomRef.setValue(playerName);
+
             }
         });
 
@@ -88,9 +91,9 @@ public class Main2Activity extends AppCompatActivity {
                 //rejoindre la room
                 button.setText("CREATE ROOM");
                 button.setEnabled(true);
-                Intent intent = new Intent(getApplicationContext(), Main3Activity.class);
-                intent.putExtra("roomName", roomName);
-                startActivity(intent);
+                FragmentManager manager = getSupportFragmentManager();
+                FragmentTransaction transaction = manager.beginTransaction();
+                transaction.replace(R.id.fragment_container, new QuestionFragment()).commit();
             }
 
             @Override
