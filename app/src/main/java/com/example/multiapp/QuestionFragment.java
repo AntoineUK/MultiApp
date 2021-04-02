@@ -50,7 +50,6 @@ public class QuestionFragment extends Fragment {
     String data;
     public ArrayList<Integer> selected = new ArrayList<>();
 
-
     DBHelper DB;
     MyDBHelper db;
     public static int score = 0;
@@ -69,8 +68,8 @@ public class QuestionFragment extends Fragment {
         mRes = getResources();
 
 
-        DB = new DBHelper(getContext());
         db = new MyDBHelper(getContext());
+        DB = new DBHelper(getContext());
 
         Parser p = null;
 
@@ -138,7 +137,6 @@ public class QuestionFragment extends Fragment {
         byte[] myPic = mQuestionBank[mCurrentIndex].getPicture();
         Bitmap b = BitmapFactory.decodeByteArray(myPic, 0, myPic.length);
         mImage.setImageBitmap(b);
-
 
 
         // at this point
@@ -260,6 +258,7 @@ public class QuestionFragment extends Fragment {
 
         FragmentManager manager = getActivity().getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.fragment_container, someFragment);
         transaction.addToBackStack(null);
         transaction.commit();
 

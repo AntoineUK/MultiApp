@@ -65,6 +65,7 @@ public class Main2Activity extends AppCompatActivity {
                 roomRef = database.getReference("rooms/" + roomName + "/player1");
                 addRoomEventListener();
                 roomRef.setValue(playerName);
+                setContentView(R.layout.fragment_home);
 
             }
         });
@@ -77,6 +78,7 @@ public class Main2Activity extends AppCompatActivity {
                 roomRef = database.getReference("rooms/" + roomName + "/player2");
                 addRoomEventListener();
                 roomRef.setValue(playerName);
+                setContentView(R.layout.fragment_home);
             }
         });
 

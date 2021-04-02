@@ -48,8 +48,6 @@ public class ResultFragment extends Fragment {
             public void onClick(View v) {
                 QuestionFragment.score = 0;
                 QuestionFragment.count = 0;
-                Fragment fragment = new UserFragment();
-                replaceFragment(fragment);
             }
         });
 
