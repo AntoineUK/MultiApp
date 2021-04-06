@@ -46,9 +46,7 @@ public class Parser {
             int start = input.indexOf("{");
             int end = input.indexOf("}");
             output.add(input.substring(start, end + 1));
-            //System.out.println(input.substring(start, end +1 ));
             input = input.substring(end + 1);
-            //System.out.println(input + " " + input.length());
         }
         return output;
     }
@@ -63,12 +61,10 @@ public class Parser {
             String question = currentSelected.substring(currentSelected.indexOf("Q") + 11);
             currentSelected = question;
             question = question.substring(0, question.indexOf('"' ));
-            //System.out.println(question);
 
 
             String possibleOptions = currentSelected.substring(currentSelected.indexOf("[") + 1, currentSelected.indexOf("]"));
             currentSelected = currentSelected.substring(currentSelected.indexOf("]") + 1);
-            //System.out.println(currentSelected);
             String[] options = possibleOptions.split(",");
 
             String Answers = currentSelected.substring(currentSelected.indexOf("[") + 1, currentSelected.indexOf("]"));
@@ -82,15 +78,12 @@ public class Parser {
             int[] x = new int[realAnswer.length];
             for (int t = 0;t < realAnswer.length; t++ ){
                 x[t] = realAnswer[t];
-                //System.out.println("answer is " + x[t]);
             }
 
 
-            //output[i] = new MultipleQuestion(counter,question, options, x );
             int picture = 0;
 
 
-            // out.add(new MultipleQuestion(counter,question, options, x,new byte[5], difficulty, "blank" ));
             counter++;
 
 

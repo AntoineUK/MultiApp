@@ -35,11 +35,13 @@ public class ResultFragment extends Fragment {
     String value;
     String playerName = "";
     String playerScore = "";
+    Number Id = 0 ;
 
     FirebaseDatabase database;
     DatabaseReference scoreResult;
     DatabaseReference playerRef;
-            //= scoreResult.child("players").getRef();;
+    DatabaseReference IdScore;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -62,15 +64,16 @@ public class ResultFragment extends Fragment {
         for(String string : scores){s = s + string + System.lineSeparator();}
         tvScores.setText("TOP SCORES" + System.lineSeparator() + s);
 
+
         database = FirebaseDatabase.getInstance();
-        scoreResult = database.getReference("score/"+playerName);
+        scoreResult = database.getReference("score/"+ playerScore);
 
 
         backHomeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Envoi du score
-                value = "Player Name :" + playerName + "Score : " + playerScore ;
+                value = "Score : " + playerScore ;
                 scoreResult.setValue(value);
                 QuestionFragment.score = 0;
                 QuestionFragment.count = 0;
@@ -89,7 +92,7 @@ public class ResultFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 playerName = snapshot.getValue().toString();
-                playerView.setText(playerName);
+                playerView.setText("Vous avez eu :");
 
             }
 

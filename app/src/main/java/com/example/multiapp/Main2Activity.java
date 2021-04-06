@@ -65,7 +65,6 @@ public class Main2Activity extends AppCompatActivity {
                 roomRef = database.getReference("rooms/" + roomName + "/player1");
                 addRoomEventListener();
                 roomRef.setValue(playerName);
-                setContentView(R.layout.fragment_home);
 
             }
         });
@@ -78,6 +77,9 @@ public class Main2Activity extends AppCompatActivity {
                 roomRef = database.getReference("rooms/" + roomName + "/player2");
                 addRoomEventListener();
                 roomRef.setValue(playerName);
+                FragmentManager manager = getSupportFragmentManager();
+                FragmentTransaction transaction = manager.beginTransaction();
+                transaction.replace(R.id.fragment_container, new QuestionFragment()).commit();
                 setContentView(R.layout.fragment_home);
             }
         });
@@ -93,9 +95,7 @@ public class Main2Activity extends AppCompatActivity {
                 //rejoindre la room
                 button.setText("CREATE ROOM");
                 button.setEnabled(true);
-                FragmentManager manager = getSupportFragmentManager();
-                FragmentTransaction transaction = manager.beginTransaction();
-                transaction.replace(R.id.fragment_container, new QuestionFragment()).commit();
+
             }
 
             @Override

@@ -38,18 +38,12 @@ public class MainActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
 
         //check si le joueur existe et obtiens la reference
-        SharedPreferences preferences = getSharedPreferences("PREFS", 0);
-        playerName = preferences.getString("playerName", "");
-        if (!playerName.equals("")){
-            playerRef = database.getReference("players/" + playerName);
-            addEventListener();
-            playerRef.setValue("");
-        }
+
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Connection du joueur
+                // Connexion du joueur
                 playerName = editText.getText().toString();
                 editText.setText("");
                 if(!playerName.equals("")){
@@ -57,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
                     button.setEnabled(false);
                     playerRef = database.getReference("players/" + playerName);
                     addEventListener();
-                    playerRef.setValue("");
+                    playerRef.setValue(playerName);
                 }
             }
         });
